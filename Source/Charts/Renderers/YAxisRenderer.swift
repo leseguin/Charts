@@ -99,7 +99,7 @@ open class YAxisRenderer: NSObject, AxisRenderer
         {
             let l = colorZones[i]
             var startPosition = CGPoint(x: 0.0, y: 0.0)
-            startPosition.x = viewPortHandler.contentLeft
+            startPosition.x = 0.0
             startPosition.y = CGFloat(l.end)
             startPosition = startPosition.applying(trans)
             
@@ -110,7 +110,7 @@ open class YAxisRenderer: NSObject, AxisRenderer
             
             let rect = CGRect(x: min(startPosition.x, endPosition.x),
                               y: min(startPosition.y, endPosition.y),
-                              width: abs(viewPortHandler.contentWidth),
+                              width: fabs(startPosition.x - endPosition.x),
                               height: fabs(startPosition.y - endPosition.y));
             
             //context.setFillColor(NSUIColor.green.withAlphaComponent(0.3).cgColor)
