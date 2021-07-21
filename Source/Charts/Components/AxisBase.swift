@@ -283,6 +283,7 @@ open class AxisBase: ComponentBase
     open func addLimitLine(_ line: ChartColorZone)
     {
         _colorZones.append(line)
+
     }
     
     /// Removes the specified ChartLimitLine from the axis.

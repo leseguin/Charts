@@ -7,7 +7,7 @@
 
 import Foundation
 
-open struct ChartColorZone {
+public struct ChartColorZone {
     let start: Int
     let end: Int
     let color: NSUIColor
