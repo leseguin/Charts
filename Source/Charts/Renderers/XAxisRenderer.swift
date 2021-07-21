@@ -66,12 +66,12 @@ open class XAxisRenderer: NSObject, AxisRenderer
             let l = colorZones[i]
             var startPosition = CGPoint(x: 0.0, y: 0.0)
             
-            startPosition.x = CGFloat(l.right)
+            startPosition.x = CGFloat(l.end)
             startPosition = startPosition.applying(trans)
             startPosition.y = viewPortHandler.contentBottom
             
             var endPosition = CGPoint(x: 0.0, y: 0.0)
-            endPosition.x = CGFloat(l.left)
+            endPosition.x = CGFloat(l.start)
             endPosition = endPosition.applying(trans)
             endPosition.y = viewPortHandler.contentTop
             
