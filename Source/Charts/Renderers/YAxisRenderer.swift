@@ -82,18 +82,15 @@ open class YAxisRenderer: NSObject, AxisRenderer
     
     open func renderColorZones(context: CGContext) {
         guard
-            let yAxis = self.axis as? YAxis,
             let transformer = self.transformer
             else { return }
-        
+        let yAxis = self.axis
         let viewPortHandler = self.viewPortHandler
-        var colorZones = yAxis.colorZones
+        let colorZones = yAxis.colorZones
         
         context.saveGState()
         
         let trans = transformer.valueToPixelMatrix
-        
-        var position = CGPoint(x: 0.0, y: 0.0)
         
         for i in 0 ..< colorZones.count
         {
@@ -105,13 +102,13 @@ open class YAxisRenderer: NSObject, AxisRenderer
             
             var endPosition = CGPoint(x: 0.0, y: 0.0)
             endPosition.y = CGFloat(l.start)
-            endPosition = endPosition.applying(trans)
             endPosition.x = viewPortHandler.contentRight
+            endPosition = endPosition.applying(trans)
             
             let rect = CGRect(x: min(startPosition.x, endPosition.x),
                               y: min(startPosition.y, endPosition.y),
-                              width: viewPortHandler.chartWidth,
-                              height: fabs(startPosition.y - endPosition.y));
+                              width: abs(startPosition.x - endPosition.x),
+                              height: abs(startPosition.y - endPosition.y));
             
             //context.setFillColor(NSUIColor.green.withAlphaComponent(0.3).cgColor)
             context.setFillColor(l.color.cgColor)
