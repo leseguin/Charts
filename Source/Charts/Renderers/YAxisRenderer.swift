@@ -111,6 +111,11 @@ open class YAxisRenderer: NSObject, AxisRenderer
                               width: abs(startPosition.x - endPosition.x),
                               height: abs(startPosition.y - endPosition.y));
             
+            let clippingRect = viewPortHandler.contentRect
+            //clippingRect.origin.y -= l.lineWidth / 2.0
+            //clippingRect.size.height += l.lineWidth
+            context.clip(to: clippingRect)
+            
             //context.setFillColor(NSUIColor.green.withAlphaComponent(0.3).cgColor)
             context.setFillColor(l.color.cgColor)
         
