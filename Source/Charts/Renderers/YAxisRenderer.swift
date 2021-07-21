@@ -102,6 +102,14 @@ open class YAxisRenderer: NSObject, AxisRenderer
             startPosition = startPosition.applying(trans)
             print(startPosition.x)
             
+            print(viewPortHandler.contentLeft)
+            print(viewPortHandler.contentRight)
+            print(viewPortHandler.contentTop)
+            print(viewPortHandler.contentBottom)
+            print(viewPortHandler.contentRect)
+            print(viewPortHandler.contentWidth)
+            print(viewPortHandler.contentHeight)
+            
             var endPosition = CGPoint(x: 0.0, y: 0.0)
             endPosition.y = CGFloat(l.start)
             endPosition.x = viewPortHandler.contentRight
