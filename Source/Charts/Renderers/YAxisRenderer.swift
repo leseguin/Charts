@@ -110,7 +110,7 @@ open class YAxisRenderer: NSObject, AxisRenderer
             
             let rect = CGRect(x: min(startPosition.x, endPosition.x),
                               y: min(startPosition.y, endPosition.y),
-                              width: fabs(startPosition.x - endPosition.x),
+                              width: viewPortHandler.chartWidth,
                               height: fabs(startPosition.y - endPosition.y));
             
             //context.setFillColor(NSUIColor.green.withAlphaComponent(0.3).cgColor)
