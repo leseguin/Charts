@@ -173,13 +173,16 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         {
             leftYAxisRenderer.renderLimitLines(context: context)
             leftYAxisRenderer.renderLimitFill(context: context)
+            leftYAxisRenderer.renderColorZones(context: context)
         }
 
         if leftAxis.isEnabled && !leftAxis.isDrawLimitLinesBehindDataEnabled
         {
             leftYAxisRenderer.renderLimitLines(context: context)
             leftYAxisRenderer.renderLimitFill(context: context)
+            leftYAxisRenderer.renderColorZones(context: context)
         }
+    
     }
     
     open override func draw(_ rect: CGRect)

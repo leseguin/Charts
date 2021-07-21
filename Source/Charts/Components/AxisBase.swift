@@ -280,27 +280,27 @@ open class AxisBase: ComponentBase
     }
     
     
-    @objc open func addLimitLine(_ line: ChartColorZone)
+    open func addLimitLine(_ line: ChartColorZone)
     {
         _colorZones.append(line)
     }
     
     /// Removes the specified ChartLimitLine from the axis.
-    @objc open func removeLimitLine(_ line: ChartColorZone)
+    open func removeLimitLine(_ line: ChartColorZone)
     {
         guard let i = _colorZones.firstIndex(of: line) else { return }
         _colorZones.remove(at: i)
     }
     
     /// Removes all LimitLines from the axis.
-    @objc open func removeAllLimitLines()
+    open func removeAllLimitLines()
     {
         _colorZones.removeAll(keepingCapacity: false)
     }
     
     
     /// The  ColorZones of this axis.
-    @objc open var colorZones : [ChartColorZone]
+    open var colorZones : [ChartColorZone]
     {
         return _colorZones
     }
