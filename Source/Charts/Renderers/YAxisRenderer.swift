@@ -96,23 +96,14 @@ open class YAxisRenderer: NSObject, AxisRenderer
         {
             let l = colorZones[i]
             var startPosition = CGPoint(x: 0.0, y: 0.0)
-            startPosition.x = viewPortHandler.contentLeft
+            startPosition.x = l.start
             print(startPosition.x)
-            startPosition.y = CGFloat(l.end)
+            startPosition.y = CGFloat(l.bottom)
             startPosition = startPosition.applying(trans)
-            print(startPosition.x)
-            
-            print(viewPortHandler.contentLeft)
-            print(viewPortHandler.contentRight)
-            print(viewPortHandler.contentTop)
-            print(viewPortHandler.contentBottom)
-            print(viewPortHandler.contentRect)
-            print(viewPortHandler.contentWidth)
-            print(viewPortHandler.contentHeight)
-            
+        
             var endPosition = CGPoint(x: 0.0, y: 0.0)
-            endPosition.y = CGFloat(l.start)
-            endPosition.x = viewPortHandler.contentRight
+            endPosition.y = CGFloat(l.top)
+            endPosition.x = l.end
             endPosition = endPosition.applying(trans)
             
             let rect = CGRect(x: min(startPosition.x, endPosition.x),
