@@ -80,11 +80,13 @@ open class XAxisRenderer: NSObject, AxisRenderer
                               width: abs(startPosition.x - endPosition.x),
                               height: abs(startPosition.y - endPosition.y));
             
-            //context.setFillColor(NSUIColor.green.withAlphaComponent(0.3).cgColor)
+            
+            // color don't go out
+            let clippingRect = viewPortHandler.contentRect
+            context.clip(to: clippingRect)
+            
             context.setFillColor(l.color.cgColor)
         
-            context.setStrokeColor(NSUIColor.green.cgColor)
-            context.setLineWidth(0.0)
             context.addRect(rect)
             context.drawPath(using: .fillStroke)
         }
