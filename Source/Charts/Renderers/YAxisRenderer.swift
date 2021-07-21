@@ -140,8 +140,8 @@ open class YAxisRenderer: NSObject, AxisRenderer
                           width: fabs(startPosition.x - endPosition.x),
                           height: fabs(startPosition.y - endPosition.y));
         
-        context.setFillColor(UIColor.green.withAlphaComponent(0.3).cgColor)
-        context.setStrokeColor(UIColor.green.cgColor)
+        context.setFillColor(NSUIColor.green.withAlphaComponent(0.3).cgColor)
+        context.setStrokeColor(NSUIColor.green.cgColor)
         context.setLineWidth(0.0)
         context.addRect(rect)
         context.drawPath(using: .fillStroke)
