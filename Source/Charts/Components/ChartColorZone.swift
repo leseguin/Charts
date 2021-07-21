@@ -8,15 +8,15 @@
 import Foundation
 
 public struct ChartColorZone {
-    let start: Float
-    let end: Float
+    let left: Float
+    let right: Float
     let top: Float
     let bottom: Float
     let color: NSUIColor
     
-    public init(start: Float, end: Float, top: Float, bottom: Float, color: NSUIColor) {
-        self.end = end
-        self.start = start
+    public init(left: Float, right: Float, top: Float, bottom: Float, color: NSUIColor) {
+        self.right = right
+        self.left = left
         self.top = top
         self.bottom = bottom
         self.color = color

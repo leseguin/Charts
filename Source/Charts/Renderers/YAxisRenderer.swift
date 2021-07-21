@@ -97,22 +97,23 @@ open class YAxisRenderer: NSObject, AxisRenderer
         {
             let l = colorZones[i]
             var startPosition = CGPoint(x: 0.0, y: 0.0)
-            startPosition.x = CGFloat(clippingRect.minX)
-            print(startPosition.x)
+            //startPosition.x = CGFloat(l.left)
             startPosition.y = CGFloat(l.bottom)
             startPosition = startPosition.applying(trans)
+            startPosition.x = viewPortHandler.contentLeft
         
             var endPosition = CGPoint(x: 0.0, y: 0.0)
             endPosition.y = CGFloat(l.top)
-            endPosition.x = CGFloat(l.end)
+            //endPosition.x = CGFloat(l.right)
             endPosition = endPosition.applying(trans)
+            endPosition.x = viewPortHandler.contentRight
             
             let rect = CGRect(x: min(startPosition.x, endPosition.x),
                               y: min(startPosition.y, endPosition.y),
                               width: abs(startPosition.x - endPosition.x),
                               height: abs(startPosition.y - endPosition.y));
             
-            
+            // color don't go out
             context.clip(to: clippingRect)
             
             //context.setFillColor(NSUIColor.green.withAlphaComponent(0.3).cgColor)

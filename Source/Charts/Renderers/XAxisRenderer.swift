@@ -55,31 +55,30 @@ open class XAxisRenderer: NSObject, AxisRenderer
             else { return }
         
         let viewPortHandler = self.viewPortHandler
-        var colorZones = axis.colorZones
+        let colorZones = axis.colorZones
         
         context.saveGState()
         
         let trans = transformer.valueToPixelMatrix
         
-        var position = CGPoint(x: 0.0, y: 0.0)
-        
         for i in 0 ..< colorZones.count
         {
             let l = colorZones[i]
             var startPosition = CGPoint(x: 0.0, y: 0.0)
-            startPosition.y = viewPortHandler.contentBottom
-            startPosition.x = CGFloat(l.end)
+            
+            startPosition.x = CGFloat(l.right)
             startPosition = startPosition.applying(trans)
+            startPosition.y = viewPortHandler.contentBottom
             
             var endPosition = CGPoint(x: 0.0, y: 0.0)
-            endPosition.x = CGFloat(l.start)
+            endPosition.x = CGFloat(l.left)
             endPosition = endPosition.applying(trans)
             endPosition.y = viewPortHandler.contentTop
             
             let rect = CGRect(x: min(startPosition.x, endPosition.x),
                               y: min(startPosition.y, endPosition.y),
-                              width: fabs(startPosition.x - endPosition.x),
-                              height: fabs(startPosition.y - endPosition.y));
+                              width: abs(startPosition.x - endPosition.x),
+                              height: abs(startPosition.y - endPosition.y));
             
             //context.setFillColor(NSUIColor.green.withAlphaComponent(0.3).cgColor)
             context.setFillColor(l.color.cgColor)
