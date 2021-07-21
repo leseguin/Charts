@@ -100,6 +100,7 @@ open class YAxisRenderer: NSObject, AxisRenderer
             print(startPosition.x)
             startPosition.y = CGFloat(l.end)
             startPosition = startPosition.applying(trans)
+            print(startPosition.x)
             
             var endPosition = CGPoint(x: 0.0, y: 0.0)
             endPosition.y = CGFloat(l.start)
