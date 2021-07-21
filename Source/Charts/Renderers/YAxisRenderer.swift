@@ -91,12 +91,13 @@ open class YAxisRenderer: NSObject, AxisRenderer
         context.saveGState()
         
         let trans = transformer.valueToPixelMatrix
+        let clippingRect = viewPortHandler.contentRect
         
         for i in 0 ..< colorZones.count
         {
             let l = colorZones[i]
             var startPosition = CGPoint(x: 0.0, y: 0.0)
-            startPosition.x = CGFloat(l.start)
+            startPosition.x = CGFloat(clippingRect.minX)
             print(startPosition.x)
             startPosition.y = CGFloat(l.bottom)
             startPosition = startPosition.applying(trans)
@@ -111,9 +112,7 @@ open class YAxisRenderer: NSObject, AxisRenderer
                               width: abs(startPosition.x - endPosition.x),
                               height: abs(startPosition.y - endPosition.y));
             
-            let clippingRect = viewPortHandler.contentRect
-            //clippingRect.origin.y -= l.lineWidth / 2.0
-            //clippingRect.size.height += l.lineWidth
+            
             context.clip(to: clippingRect)
             
             //context.setFillColor(NSUIColor.green.withAlphaComponent(0.3).cgColor)
