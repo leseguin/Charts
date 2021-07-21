@@ -168,6 +168,30 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         }
     }
     
+    func drawColorBackground(context: CGContext) {
+        
+        if xAxis.isEnabled && xAxis.isDrawLimitLinesBehindDataEnabled
+        {
+            xAxisRenderer.renderColorZones(context: context)
+        }
+
+        if xAxis.isEnabled && !xAxis.isDrawLimitLinesBehindDataEnabled
+        {
+            xAxisRenderer.renderColorZones(context: context)
+        }
+        
+        if leftAxis.isEnabled && leftAxis.isDrawLimitLinesBehindDataEnabled
+        {
+            leftYAxisRenderer.renderColorZones(context: context)
+        }
+
+        if leftAxis.isEnabled && !leftAxis.isDrawLimitLinesBehindDataEnabled
+        {
+            leftYAxisRenderer.renderColorZones(context: context)
+        }
+    
+    }
+    
     open override func draw(_ rect: CGRect)
     {
         super.draw(rect)
@@ -228,17 +252,7 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
             rightYAxisRenderer.renderLimitLines(context: context)
         }
         
-        if leftAxis.isEnabled && leftAxis.isDrawLimitLinesBehindDataEnabled
-        {
-            leftYAxisRenderer?.renderLimitLines(context: context)
-            leftYAxisRenderer?.renderLimitFill(context: context)
-        }
-
-        if leftAxis.isEnabled && !leftAxis.isDrawLimitLinesBehindDataEnabled
-        {
-            leftYAxisRenderer?.renderLimitLines(context: context)
-            leftYAxisRenderer?.renderLimitFill(context: context)
-        }
+        drawColorBackground(context: context)
     
         
         context.saveGState()
