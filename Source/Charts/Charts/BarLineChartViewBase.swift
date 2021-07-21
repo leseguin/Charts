@@ -169,18 +169,14 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
     }
     
     func drawColorBackground(context: CGContext) {
-        if leftAxis.isEnabled && leftAxis.isDrawLimitLinesBehindDataEnabled
+        if leftAxis.isEnabled
         {
-            leftYAxisRenderer.renderLimitLines(context: context)
-            leftYAxisRenderer.renderLimitFill(context: context)
             leftYAxisRenderer.renderColorZones(context: context)
         }
-
-        if leftAxis.isEnabled && !leftAxis.isDrawLimitLinesBehindDataEnabled
+        
+        if xAxis.isEnabled
         {
-            leftYAxisRenderer.renderLimitLines(context: context)
-            leftYAxisRenderer.renderLimitFill(context: context)
-            leftYAxisRenderer.renderColorZones(context: context)
+            xAxisRenderer.renderColorZones(context: context)
         }
     
     }
