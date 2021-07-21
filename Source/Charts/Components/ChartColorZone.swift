@@ -11,4 +11,10 @@ public struct ChartColorZone {
     let start: Int
     let end: Int
     let color: NSUIColor
+    
+    public init(start: Int, end: Int, color: NSUIColor) {
+        self.end = end
+        self.start = start
+        self.color = color
+    }
 }
