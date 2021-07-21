@@ -114,7 +114,8 @@ open class YAxisRenderer: NSObject, AxisRenderer
                               height: fabs(startPosition.y - endPosition.y));
             
             //context.setFillColor(NSUIColor.green.withAlphaComponent(0.3).cgColor)
-            context.setFillColor(l.color)
+            context.setFillColor(l.color.cgColor)
+        
             context.setStrokeColor(NSUIColor.green.cgColor)
             context.setLineWidth(0.0)
             context.addRect(rect)
