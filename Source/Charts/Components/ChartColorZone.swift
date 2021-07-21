@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ChartColorZone {
+public struct ChartColorZone : ComponentBase{
     let start: Float
     let end: Float
     let top: Float
