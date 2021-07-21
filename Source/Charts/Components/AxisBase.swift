@@ -286,6 +286,7 @@ open class AxisBase: ComponentBase
     }
     
     /// Removes the specified ChartLimitLine from the axis.
+    /*
     open func removeLimitLine(_ line: ChartColorZone)
     {
         guard let i = _colorZones.firstIndex(of: line) else { return }
@@ -297,6 +298,7 @@ open class AxisBase: ComponentBase
     {
         _colorZones.removeAll(keepingCapacity: false)
     }
+     */
     
     
     /// The  ColorZones of this axis.
