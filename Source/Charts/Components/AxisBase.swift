@@ -282,7 +282,7 @@ open class AxisBase: ComponentBase
     
     open func addColorZone(start: Float, end: Float, color: NSUIColor)
     {
-        _colorZones.append(ChartColorZone(start: start, end: end, color: color)
+        _colorZones.append(ChartColorZone(start: start, end: end, color: color))
 
     }
     
