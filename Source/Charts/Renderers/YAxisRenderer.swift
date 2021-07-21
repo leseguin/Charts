@@ -118,6 +118,7 @@ open class YAxisRenderer: NSObject, AxisRenderer
             context.clip(to: clippingRect)
     
             context.setFillColor(l.color.cgColor)
+            context.setLineWidth(0.0)
             context.addRect(rect)
             context.drawPath(using: .fillStroke)
         }
