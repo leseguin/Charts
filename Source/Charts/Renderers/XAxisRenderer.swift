@@ -85,6 +85,55 @@ open class XAxisRenderer: AxisRendererBase
         xAxis.labelRotatedHeight = labelRotatedSize.height
     }
     
+    open func renderColorZones(context: CGContext) {
+        guard
+            let transformer = self.transformer,
+            let xAxis = self.axis as? XAxis
+            else { return }
+        
+        let viewPortHandler = self.viewPortHandler
+        let colorZones = xAxis.colorZones
+        
+        context.saveGState()
+        
+        let trans = transformer.valueToPixelMatrix
+        
+        for i in 0 ..< colorZones.count
+        {
+            let l = colorZones[i]
+            var startPosition = CGPoint(x: 0.0, y: 0.0)
+            
+            startPosition.x = CGFloat(l.end)
+            startPosition = startPosition.applying(trans)
+            startPosition.y = viewPortHandler.contentBottom
+            
+            var endPosition = CGPoint(x: 0.0, y: 0.0)
+            endPosition.x = CGFloat(l.start)
+            endPosition = endPosition.applying(trans)
+            endPosition.y = viewPortHandler.contentTop
+            
+            let rect = CGRect(x: min(startPosition.x, endPosition.x),
+                              y: min(startPosition.y, endPosition.y),
+                              width: abs(startPosition.x - endPosition.x),
+                              height: abs(startPosition.y - endPosition.y));
+            
+            
+            // color don't go out
+            let clippingRect = viewPortHandler.contentRect
+            context.clip(to: clippingRect)
+            
+            context.setFillColor(l.color.cgColor)
+    
+            context.setLineWidth(0.0)
+            context.addRect(rect)
+            context.drawPath(using: .fillStroke)
+        }
+        
+        
+        
+        context.restoreGState()
+    }
+    
     open override func renderAxisLabels(context: CGContext)
     {
         guard let xAxis = self.axis as? XAxis else { return }
