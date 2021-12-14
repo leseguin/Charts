@@ -27,6 +27,8 @@ open class AxisBase: ComponentBase
     @objc open var labelFont = NSUIFont.systemFont(ofSize: 10.0)
     @objc open var labelTextColor = NSUIColor.labelOrBlack
     
+    @objc open var zoneColorLabelFont = NSUIFont.systemFont(ofSize: 10.0)
+    
     @objc open var axisLineColor = NSUIColor.gray
     @objc open var axisLineWidth = CGFloat(0.5)
     @objc open var axisLineDashPhase = CGFloat(0.0)

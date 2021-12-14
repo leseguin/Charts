@@ -247,6 +247,30 @@ open class YAxisRenderer: AxisRendererBase
         }
         
         context.restoreGState()
+        
+        let labelFont = yAxis.zoneColorLabelFont
+        let labelTextColor = yAxis.labelTextColor
+        let formatter = yAxis.valueFormatter
+        
+        colorZones.forEach { colorZone in
+            let l = colorZone
+            var startPosition = CGPoint(x: 0.0, y: 0.0)
+            //startPosition.x = CGFloat(l.left)
+            startPosition.y = CGFloat(l.start)
+            startPosition = startPosition.applying(trans)
+            startPosition.x = viewPortHandler.contentLeft
+            
+            startPosition.y = startPosition.y - 8
+            startPosition.x = startPosition.x - 5
+            
+            ChartUtils.drawText(
+                context: context,
+                text: formatter?.stringForValue(Double(colorZone.start), axis: yAxis) ?? String(colorZone.start),
+                point: startPosition,
+                align: .right,
+                attributes: [.font: labelFont, .foregroundColor: labelTextColor]
+            )
+        }
     }
     
     @objc open var gridClippingRect: CGRect
